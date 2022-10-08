@@ -1,2 +1,2 @@
 # PyScript
-Experiments with PyScript
+Matt Stammers' Experiments with PyScript
