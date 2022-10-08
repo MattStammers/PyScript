@@ -34,8 +34,11 @@ print("Microsecond :", current_time.microsecond)
 
 def clock():
     while True:
-        print(datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), end="\r")
-        output = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        print(datetime.datetime.now().strftime("%D/%m/%Y %H:%M:%S"), end="\r")
+        output = datetime.datetime.now().strftime("%D/%m/%Y %H:%M:%S")
         time.sleep(1)
+
+output = datetime.datetime.now().strftime("%D/%m/%Y %H:%M:%S")
+print(int(output[-1]))
 
 clock()
