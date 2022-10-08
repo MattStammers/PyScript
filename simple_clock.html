@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Simple Clock Demo</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+
+  <body>
+    <div class="font-mono">start time: <label id="outputDiv"></label></div>
+    <div id="outputDiv2" class="font-mono"></div>
+    <div id="outputDiv3" class="font-mono"></div>
+    <py-script output="outputDiv">
+# demonstrates how use the global PyScript pyscript_loader
+# to send operation log messages to it
+import datetime
+datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    </py-script>
+
+    <py-script>
+import datetime
+import asyncio
+import time
+
+async def foo():
+    while True:
+        await time.sleep(1)
+        output = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        Element("outputDiv2").write(output)
+
+        out3 = Element("outputDiv3")
+        if output.second[-1] in ["0", "4", "8"]:
+        out3.write("It's espresso time!")
+        else:
+        out3.clear()
+
+def clock():
+    while True:
+        print(datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), end="\r")
+        time.sleep(1)
+
+# close the global PyScript pyscript_loader
+pyscript_loader.close()
+pyscript.run_until_complete(foo())
+    </py-script>
+  </body>
+</html>
