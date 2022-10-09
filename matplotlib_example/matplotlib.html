@@ -7,14 +7,16 @@
   <body>
     <h1>Let's plot random numbers</h1>
     <div id="plot"></div>
-    <py-config type="toml">
-        packages = ["numpy", "matplotlib"]
-        paths = ["./data.py"]
+    <py-config type="json">
+        {
+          "packages": ["numpy", "matplotlib"]
+        }
     </py-config>
     <py-script output="plot">
       import matplotlib.pyplot as plt
-      from data import make_x_and_y
-      x, y = make_x_and_y(n=1000)
+      import numpy as np
+      x = np.random.randn(1000)
+      y = np.random.randn(1000)
       fig, ax = plt.subplots()
       ax.scatter(x, y)
       fig
